@@ -13,7 +13,7 @@ export default React.createClass({
     componentDidMount:function() {
         var count=this.props.params.count;
         console.log("Did"+count);
-        var url='php/article.php?count='+count;
+        var url='php/article2.php?count='+count;
         var $checkSessionServer=$.getJSON(url);
         $checkSessionServer.then(
             value => this.setState({loading:false,data: value}),
