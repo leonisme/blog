@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import $ from "jquery";
+import ReactMarkdown from "react-markdown";
 
 export default React.createClass({
     getInitialState: function() {
@@ -13,7 +14,7 @@ export default React.createClass({
     componentDidMount:function() {
         var count=this.props.params.count;
         console.log("Did"+count);
-        var url='php/article2.php?count='+count;
+        var url='php/article.php?count='+count;
         var $checkSessionServer=$.getJSON(url);
         $checkSessionServer.then(
             value => this.setState({loading:false,data: value}),
@@ -41,12 +42,12 @@ export default React.createClass({
         }else{
             //arr=arr.concat(this.state.data);
 
-
+var input=this.state.data.article;
                     var article=<div className="abstract">
                         <div className="info"><span className="time">{this.state.data.time}</span> <i className="fa fa-tags"></i> <span className="span-name">{this.state.data.tags}</span></div>
                         <h1>{this.state.data.title}</h1>
                         <div className="article">
-                            <p>{this.state.data.article}</p>
+                            <ReactMarkdown source={input}></ReactMarkdown>
                         </div>
                     </div>
 
