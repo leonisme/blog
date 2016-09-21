@@ -14,11 +14,13 @@ import App from './modules/App'
 import Main from './modules/Main'
 import Article from './modules/Article'
 
+var input = '# This is a header\n\nAnd this is a paragraph';
 render((
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Main}/>
-            <Route path="/article/:count" component={Article}/>
+            <Route path="/article/:count" component={Article}>
+                </Route>
         </Route>
     </Router>
 ), document.getElementById('container'))
